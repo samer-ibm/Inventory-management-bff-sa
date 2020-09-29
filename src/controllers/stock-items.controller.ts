@@ -2,7 +2,7 @@ import {Inject} from 'typescript-ioc';
 import {GET, Path} from 'typescript-rest';
 import {HttpError} from 'typescript-rest/dist/server/model/errors';
 import {StockItemModel} from '../models';
-import {StockItemsMockService} from '../services';
+import {StockItemsService} from '../services';
 class BadGateway extends HttpError {
   constructor(message?: string) {
     super("BadGateway", message);
@@ -12,7 +12,7 @@ class BadGateway extends HttpError {
 @Path('stock-items')
 export class StockItemsController {
   @Inject
-  service: StockItemsMockService;
+  service: StockItemsService;
   @GET
   async listStockItems(): Promise<StockItemModel[]> {
     try {
